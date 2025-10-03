@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Art Museum</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    nav {
+      background: #34495e;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav button {
+      background: #ecf0f1;
+      border: none;
+      margin: 5px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav button:hover {
+      background: #1abc9c;
+      color: white;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .art-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .art-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      background: #eee;
+    }
+
+    .art-card h3 {
+      margin: 10px 0;
+    }
+
+    .art-card p {
+      padding: 0 15px;
+      font-size: 0.95rem;
+      text-align: justify;
+    }
+
+    .like-btn {
+      margin: 10px;
+      padding: 8px 12px;
+      background: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .like-btn:hover {
+      background: #3498db;
+    }
+
+    .feedback {
+      background: #ecf0f1;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+    }
+
+    .feedback h2 {
+      text-align: center;
+    }
+
+    .feedback textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .feedback button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 15px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .feedback-list {
+      margin-top: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .feedback-item {
+      border-bottom: 1px solid #ccc;
+      padding: 8px 0;
+    }
+
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎨 Virtual Art Museum</h1>
+    <p>Welcome to our online gallery showcasing <b>4 timeless masterpieces</b> in painting and visual arts.<br>
+    This website is created for <b>educational purposes only</b>, to inspire learning and appreciation of art.</p>
+  </header>
+
+  <nav>
+    <button onclick="scrollToSection('gallery')">Explore Artworks</button>
+    <button onclick="scrollToSection('feedback')">Leave Feedback</button>
+  </nav>
+
+  <section id="gallery" class="gallery">
+
+    <!-- Artwork 1 -->
+    <div class="art-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Mona_Lisa.jpg" alt="Mona Lisa">
+      <h3>Mona Lisa</h3>
+      <p>Painted by Leonardo da Vinci between 1503 and 1506, the <b>Mona Lisa</b> is the most famous painting in the world. 
+      It is celebrated for the mysterious expression of the subject, believed to be Lisa Gherardini, and its innovative use of sfumato, a technique that blends colors seamlessly without harsh lines.</p>
+      <button class="like-btn" onclick="like(this)">👍 Like <span>0</span></button>
+    </div>
+
+    <!-- Artwork 2 -->
+    <div class="art-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg" alt="The Scream">
+      <h3>The Scream</h3>
+      <p>Created by Edvard Munch in 1893, <b>The Scream</b> is an expressionist painting that depicts a figure against a fiery sky, symbolizing anxiety and existential fear. 
+      It is considered one of the most recognizable images in art history and a powerful reflection of human emotion.</p>
+      <button class="like-btn" onclick="like(this)">👍 Like <span>0</span></button>
+    </div>
+
+    <!-- Artwork 3 -->
+    <div class="art-card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/d/dd/The_Persistence_of_Memory.jpg" alt="Persistence of Memory">
+      <h3>The Persistence of Memory</h3>
+      <p>Painted by Salvador Dalí in 1931, <b>The Persistence of Memory</b> is a surrealist masterpiece. The melting clocks represent the relativity of time and the dreamlike nature of reality, making it one of the most famous works in surrealism.</p>
+      <button class="like-btn" onclick="like(this)">👍 Like <span>0</span></button>
+    </div>
+
+    <!-- Artwork 4 -->
+    <div class="art-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Great_Wave_off_Kanagawa2.jpg" alt="Great Wave off Kanagawa">
+      <h3>The Great Wave off Kanagawa</h3>
+      <p>Created by the Japanese artist Hokusai around 1831, <b>The Great Wave off Kanagawa</b> is a woodblock print and the most famous example of Japanese ukiyo-e art. 
+      It symbolizes the immense power of nature and remains a cultural icon of Japan worldwide.</p>
+      <button class="like-btn" onclick="like(this)">👍 Like <span>0</span></button>
+    </div>
+
+  </section>
+
+  <section id="feedback" class="feedback">
+    <h2>💬 Visitor Feedback</h2>
+    <textarea id="feedbackText" placeholder="Write your feedback here..."></textarea>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+
+    <div id="feedbackList" class="feedback-list"></div>
+  </section>
+
+  <footer>
+    <p>Website created by <b>Carl Louie Cabrejas</b> | © 2025 Educational Project</p>
+  </footer>
+
+  <script>
+    // Like button functionality
+    function like(button) {
+      let span = button.querySelector("span");
+      let count = parseInt(span.innerText);
+      span.innerText = count + 1;
+    }
+
+    // Scroll to section
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Feedback functionality
+    function submitFeedback() {
+      let text = document.getElementById("feedbackText").value.trim();
+      if (text !== "") {
+        let list = document.getElementById("feedbackList");
+        let item = document.createElement("div");
+        item.className = "feedback-item";
+        item.innerText = text;
+        list.appendChild(item);
+        document.getElementById("feedbackText").value = "";
+      } else {
+        alert("Please write something before submitting.");
+      }
+    }
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>About Our Website</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Who We Are</h2>
+      <p>We are a passionate team dedicated to building beautiful and functional websites.</p>
+    </section>
+
+    <section>
+      <h2>Our Mission</h2>
+      <p>To empower users with intuitive digital experiences and creative design.</p>
+    </section>
+
+    <button id="reveal">Click to Reveal a Fun Fact</button>
+    <p id="fact" class="hidden">We started coding in a garage with just one laptop!</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 OurWebsite. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
